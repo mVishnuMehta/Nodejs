@@ -1,0 +1,41 @@
+
+You must have only one package.json in the entire folder.
+
+A folder can have many js file each performing different operations but will have only one master js file.
+
+You can access one js text,array,object and functions.
+
+A) Text and functions can be accessed through by using module.export
+
+file1.js
+
+const r=function(){
+return "You are gonna win"};
+
+modules.export=r;
+
+file2.js
+
+const k=require('./path of file1.js');
+const g=k();
+console.log(g);
+
+B)
+For Object array and text u must use exports. option
+
+file1.js
+
+const p={
+Name:'Vishnu',
+BAtch:'b3'}
+
+to send this u need to use
+
+exports.b=p;
+
+file2.js
+
+const d=require('./pathoffile1.js);
+console.log(d.b);
+
+

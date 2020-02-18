@@ -1,0 +1,55 @@
+Routing with nodejs can be done with 2 ways using a framework or working without a framework.
+
+Without a Framework
+That is using Router method.
+
+WIKI.JS FILE
+
+var express=require('express');
+var router=express.Router();
+
+var http = require('http');
+
+http.createServer(function (req, res) {
+    res.write('Hello World!'); // Write a response
+    res.end(); // End the response
+}).listen(3000, function() {
+    console.log("server start at port 3000"); // The server object listens on port 3000
+});
+
+router.get('/', function (req, res) {
+  res.send('Wiki home page');
+})
+
+router.get('/about', function (req, res) {
+  res.send('About this wiki');
+})
+
+module.exports = router;
+
+APP.JS
+
+var wiki = require('./wiki.js');
+app.use('/wiki', wiki);
+
+This method is mainly used in which we want to navigate into multiple modules.In this u need to create a server for the local 
+and hence preferred mainly for the sharing through .js files.
+
+
+WITH USING FRAMEWORK (EXPRESS.JS IS THE FRAMEWORK OF THE NODE JS)
+
+var express=require('express');
+var app=express();
+const PORT=3000;
+app.listen(PORT ,()=>{console.log("Inside port 3000")});
+
+app.get('/',(req,res)=>{
+    console.log(req.url);
+    res.send("Hello World")
+});
+
+In this u can directly Use the .listen method of the app object for setting it to a port
+
+
+
+

@@ -50,6 +50,14 @@ app.get('/',(req,res)=>{
 
 In this u can directly Use the .listen method of the app object for setting it to a port
 
+COMMON THINGS PERTAINING TO BOTH -
+get method if u want to have certain parameter u need to use req.params
+while 
+in case of post we used req.body
+Major difference apart from the differnce in their meaning,
+
+
+
 
 
 

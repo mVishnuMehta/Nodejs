@@ -1,1 +1,20 @@
 
+Callback means calling something inside someone
+
+Example is like 
+
+// a and b represents 2 nos and Callback which is the parameter over here represents the thing which we want to check
+
+function r(a,b,checkCallback){
+  checkCallback(a,b);
+}
+
+function palindrome(d,s){
+  console.log(a+b);
+}
+
+function notpalindrome(d,s){
+  console.log(a-b);
+};
+
+r(2,3,palindrome);

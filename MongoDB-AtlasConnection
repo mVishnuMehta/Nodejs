@@ -1,0 +1,46 @@
+//While connecting to a MongoDB Atlas u first need to create a Schema(Structure of the collection)
+ var aschema= new mongo.Schema({
+     Name:{type:String},
+     MobileNo:{type:Number},
+     EmailID:{type:String},
+     Passwords:{type:String}
+ })
+
+// Now u need to create a Mongo Model
+var g=mongo.model("RegDetail",aschema);
+
+// Connect to mongo Atlas using MongoClient.connect method
+var db = MongoClient.connect("mongodb+srv://vishnu:<password>@cluster0-jf2uv.mongodb.net/test?retryWrites=true&w=majority",  { useUnifiedTopology: true } ,function (err, response) {
+    if (err) {
+         console.log(err);
+     }
+     else {
+         console.log("connected to db");       
+     }
+ })
+ 
+ This one is used to add document to collection of mongo -
+ 
+ app.post("/register',(req,res)=>{ 
+   var firstname=req.body.FirstName;
+   var email=req.body.Email;
+   var mobile=req.body.Mobile;
+   var password=req.body.Password;
+   console.log(req.body);
+     g.create({Name:firstname,
+                 MobileNo:mobile,
+                 EmailID:email,
+                 Passwords:password
+     }),(err,resp)=>{
+         if(err)
+         {
+            console.log(err);
+            res.send("0");
+        }
+         else{
+            console.log("data saved");
+            res.send("1");
+         }
+    }
+    })
+

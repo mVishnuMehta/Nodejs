@@ -1,0 +1,113 @@
+// SCHEMA OF CUSTOMER LOG COLLECTION 
+
+var mongoose=require("mongoose");
+
+var CustSchema = new mongoose.Schema({
+    cName: String,
+    cEmail: String,
+    cPassword: String
+  },
+    {collection:"culogdata"}
+// WE HAVE DEFINED THE NAME OF COLLECTION OVER HERE AS MONGODB CONSIDER THE NAME AS PLURAL HENCE WE NEED TO DEFINE IT HERE
+    );
+
+// SCHEMA OF APPOINTMENT DETAIL COLLECTION
+var mongoose=require("mongoose");
+
+var AppSchema = new mongoose.Schema({
+    Date: String,
+    Time: String,
+    Message: String,
+    CEmail:String,
+    DoctorID:String
+  });
+  
+module.exports = mongoose.model("Appdetails", AppSchema);
+
+  
+module.exports = mongoose.model("culogdatvar Appoint=require("../models/appdetails");
+var Customer=require("../models/culogdetails");
+
+exports.bookappointment = function(req, res) {
+    console.log("Into Appointment Details section ");
+    console.log(req.body);
+    
+// HERE WE ARE CREATING AN OBJECT OF MODEL Appoint
+
+    let appoint=new Appoint({
+        Date:req.body.bdata,
+        Time:req.body.btim,
+        Message:req.body.btext,
+        CEmail:req.body.bemail,
+        DoctorID:req.body.bid
+    })
+// .SAVE METHOD IS USED TO INSERT THE RECORD INTO THE COLLECTION.
+
+appoint.save()
+    .then(data=>{
+        console.log("appointment booked");
+        console.log(data);
+        res.send("1");
+      // db.close();
+    })
+    .catch(err=>{
+        console.log(err);
+        res.send("0");
+    })
+    
+};
+ 
+exports.localstoragedata=function(req,res){
+        console.log("Into localstorage section");
+        console.log(req.body);
+
+     var customer=new Customer();
+     customer.cEmail=req.body.emaillocal;
+     customer.cPassword=req.body.passwlocal;
+     
+// THIS METHOD .FIND IS USED TO FETCH THE DATA FROM THE COLLECTION
+
+Customer.find((customer))
+     .exec(function(err, resp) {
+       if (err) {
+           res.send("0");
+           console.log(err);
+      //   res.status(500).json(err);
+       } else {
+
+        res.send("1");
+        console.log(resp); 
+     //    res.status(200).json();
+       }
+     });
+
+    } 
+        
+// THIS METHOD IS USED TO FIND AND DELETE THE RECORD FROM THE COLLECTION
+PatientDetailsDelete.findOneAndDelete({CEmail:req.body.email})
+    .exec(function(err, resp) {
+           if (err) {
+                    res.send("0");
+                    console.log(err);
+                } 
+         else {
+                 console.log("1 Document deleted")
+                 res.send(resp);
+                 console.log(resp); 
+                }
+     });
+
+// THIS METHOD IS USED TO UPDATE THE RECORD FROM THE COLLECTION
+
+DoctorDetailslogin.findOneAndUpdate({Email:req.body.emails},(newvalues))
+    .exec(function(err, resp) {
+            if (err) {
+            res.send("0");
+            console.log(err);
+    } 
+    else {
+          res.send(resp);
+         console.log(resp); 
+         console.log("Doctors details updated");
+        }
+      });

@@ -18,3 +18,53 @@ function notpalindrome(d,s){
 };
 
 r(2,3,palindrome);
+
+
+DIVING DEEP INTO CALLBACKS
+
+The callbacks that we use along with the mongodb are already defined we only declare/give the values.
+FOR EG
+WE FIRST DEFINE A CALLBACK-
+
+const Thecallback=(callback)=>{
+  setTimeout(()=>{
+    callback(undefined,[1,2,3]);  // Here we have defined the callback values that first value is undefined while the second value is an array of element. 
+  },2000);
+  
+}
+
+NOW WE WILL CALL THE FUNCTION
+Thecallback(err,res)=>{
+if(err){
+console.log(err);
+if(res){
+console.log(res)
+}
+});
+
+})
+
+Detailed example of callback
+const doWorkCallback=((callback)=>{
+    setTimeout(()=>{
+       // callback(undefined,[1,2,3,4],[43,56])},2000)
+       callback("error is there",undefined,undefined)},2000)
+
+})
+
+doWorkCallback((res,err,sed)=>{
+    if(res){
+        console.log(res +" is the response");
+    }
+    if(err)
+    {
+        console.log(res);
+    }
+    if(sed){
+        console.log(sed);
+    }
+})
+
+
+
+

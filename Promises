@@ -1,0 +1,16 @@
+const PromiseFirst =new Promise((resolve,reject)=>{
+    
+    reject("error !");
+});
+
+Promise has 2 parameteres one is resolve and the other one is reject
+resolve is associated with success while reject is associated with failure.
+
+
+PromiseFirst.then((data)=>{
+    console.log(data);
+}).catch((error)=>{
+    console.log(error);
+})
+
+

@@ -1,0 +1,52 @@
+We can allow specific values to be entered in the Collection.
+
+While defining the model along with the datatype we can also specify the condition on that field.
+
+
+Eg
+
+var DoctorSchema = new mongoose.Schema(
+      {
+        name:{
+        type:String,
+        required:true
+        },
+        age:{
+        type:Number,
+        validate(value){
+        if(value <0){
+        throw new Error("Age cannot be neagative");  // Error is a keyword
+        }
+        }}     
+  })
+  
+  Inbuilt library of node can also be used
+  npm i validator;
+  const validator=require('validator');
+  
+  age:{
+  validate(value){
+  if(!validator.isEmail(value)){
+      throw new Error("Age must be a positive no");
+        }
+     },
+     
+  trim:true, // remove spaces
+  lowercase:true // convert the string to lowercase
+  default:hello // set the default value for that field
+     }
+     
+  password:{
+  type:String,
+  required:true,
+  trim:true,
+  minlength:6,
+  validate(value){
+  if(value.toLowerCase().includes('password'))
+    { throw new Error("Password must be valid. Its invalid");
+    }
+  }
+  
+  
+  }   
+     

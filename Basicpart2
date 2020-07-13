@@ -1,0 +1,8 @@
+To install a dependency as a dev dependencies we need to write
+    npm i nodemon@version(version u want) --save -dev
+ 
+We write 
+app.use(bodyParser.json()); Or app.use(express.json())
+We do so as to access the req.body thing.
+
+
